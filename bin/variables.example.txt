@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# User
+export USER_ID=$(id -u)
+export GROUP_ID=$(id -u)
+
+# Devstack
+export DEVSTACK_DIRECTORY=$(pwd)
+
+# Docker
+export DOCKER_BIN_DIRECTORY=${DEVSTACK_DIRECTORY}/bin/docker
+export DOCKER_DIRECTORY=${DEVSTACK_DIRECTORY}/docker
+export DOCKER_SECRET_DIRECTORY=${DOCKER_DIRECTORY}/secrets
+export DOCKER_IMAGE_CONTEXT_PATH=docker/images # Used in Dockerfiles as relative path to the context (DEVSTACK_DIRECTORY)
+
+# App
+export APP_CONTEXT_PATH=app # Used in Dockerfiles as relative path to the context (DEVSTACK_DIRECTORY)
+export APP_DIRECTORY=${DEVSTACK_DIRECTORY}/${APP_CONTEXT_PATH}
+export APP_GENERATED_DIRECTORY=${APP_DIRECTORY}/generated
+
+# Var
+export VAR_DIRECTORY=${DOCKER_DIRECTORY}/var
+
+# Logs
+export LOG_DIRECTORY=${VAR_DIRECTORY}/logs
+export APP_LOG_DIRECTORY=${LOG_DIRECTORY}/app-server
+export HTTP_PROXY_LOG_DIRECTORY=${LOG_DIRECTORY}/http-proxy

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+. bin/variables
+
+cd ${DOCKER_DIRECTORY}
+
+# Run composer in api-server container
+docker-compose exec -w /home/dockeruser/backend api-server composer $@
+
+cd ${DEVSTACK_DIRECTORY}
